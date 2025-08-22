@@ -12,7 +12,10 @@ export const Header = () => {
     solutions: "Решения", 
     technology: "Технологии",
     gallery: "Галерея",
+    calculator: "Калькулятор",
+    reviews: "Отзывы",
     clients: "Для кого",
+    legal: "Документы",
     contacts: "Контакты"
   };
 
@@ -58,10 +61,22 @@ export const Header = () => {
               {navigation.gallery}
             </button>
             <button 
+              onClick={() => scrollToSection('calculator')}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {navigation.calculator}
+            </button>
+            <button 
               onClick={() => scrollToSection('clients')}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               {navigation.clients}
+            </button>
+            <button 
+              onClick={() => scrollToSection('legal-info')}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {navigation.legal}
             </button>
             <button 
               onClick={() => scrollToSection('contacts')}
@@ -122,10 +137,28 @@ export const Header = () => {
                 {navigation.gallery}
               </button>
               <button 
+                onClick={() => scrollToSection('calculator')}
+                className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
+              >
+                {navigation.calculator}
+              </button>
+              <button 
+                onClick={() => scrollToSection('reviews')}
+                className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
+              >
+                {navigation.reviews}
+              </button>
+              <button 
                 onClick={() => scrollToSection('clients')}
                 className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
               >
                 {navigation.clients}
+              </button>
+              <button 
+                onClick={() => scrollToSection('legal-info')}
+                className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
+              >
+                {navigation.legal}
               </button>
               <button 
                 onClick={() => scrollToSection('contacts')}

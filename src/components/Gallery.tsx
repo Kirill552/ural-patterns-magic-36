@@ -7,8 +7,11 @@ import busStopDay from "@/assets/bus-stop-day.jpg";
 import wasteContainersWinter from "@/assets/waste-containers-winter.jpg";
 import pavilionSummer from "@/assets/pavilion-summer.jpg";
 import urbanFormsAutumn from "@/assets/urban-forms-autumn.jpg";
+import { useSectionSEO } from "@/components/SEOHead";
 
 export const Gallery = () => {
+  useSectionSEO('gallery');
+  
   const [viewMode, setViewMode] = useState<'day' | 'night'>('day');
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -61,10 +64,17 @@ export const Gallery = () => {
   const currentImage = viewMode === 'day' ? currentProject.dayImage : currentProject.nightImage;
 
   return (
-    <section id="gallery" className="py-20 bg-primary/5">
+    <section 
+      id="gallery" 
+      className="py-20 bg-primary/5"
+      data-seo-title="Галерея проектов - Примеры работ Уральские узоры"
+      data-seo-description="Посмотрите примеры наших работ: архитектурные формы с орнаментами в дневном и ночном освещении"
+      role="main"
+      aria-labelledby="gallery-heading"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+          <h2 id="gallery-heading" className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
             {content.title}
           </h2>
           <p className="text-xl text-gold font-medium mb-8">

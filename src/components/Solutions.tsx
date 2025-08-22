@@ -5,8 +5,11 @@ import busStopImage from "@/assets/bus-stop-day.jpg";
 import wasteContainersImage from "@/assets/waste-containers-winter.jpg";
 import pavilionImage from "@/assets/pavilion-summer.jpg";
 import urbanFormsImage from "@/assets/urban-forms-autumn.jpg";
+import { useSectionSEO } from "@/components/SEOHead";
 
 export const Solutions = () => {
+  useSectionSEO('solutions');
+  
   const content = {
     title: "Наши решения",
     subtitle: "Комплексные решения для городской среды",
@@ -45,10 +48,17 @@ export const Solutions = () => {
   };
 
   return (
-    <section id="solutions" className="py-20 bg-muted/30">
+    <section 
+      id="solutions" 
+      className="py-20 bg-muted/30"
+      data-seo-title="Наши решения - Архитектурные формы с уральскими орнаментами"
+      data-seo-description="Контейнерные площадки, остановочные комплексы, павильоны и малые архитектурные формы"
+      role="main"
+      aria-labelledby="solutions-heading"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+          <h2 id="solutions-heading" className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
             {content.title}
           </h2>
           <p className="text-xl text-gold font-medium">

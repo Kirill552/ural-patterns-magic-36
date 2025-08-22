@@ -20,9 +20,9 @@ export const Contacts = () => {
     title: "Контакты",
     subtitle: "Свяжитесь с нами для консультации",
     contactInfo: {
-      address: "г. Екатеринбург, ул. Промышленная, 1",
-      phone: "+7 (343) 000-00-00",
-      email: "info@uralpatterns.ru",
+      address: "г. Березовский, Свердловской обл., ДНП \"Шишкино\", ул. Сосновая, 23",
+      phone: "+7 (912) 037-01-70",
+      email: "director@a-96.ru",
       hours: "Пн-Пт: 9:00-18:00"
     },
     form: {
@@ -32,7 +32,7 @@ export const Contacts = () => {
       email: "Email",
       emailPlaceholder: "your@email.com",
       phone: "Телефон",
-      phonePlaceholder: "+7 (000) 000-00-00",
+      phonePlaceholder: "+7 (912) 037-01-70",
       message: "Сообщение",
       messagePlaceholder: "Расскажите о вашем проекте...",
       send: "Отправить заявку"

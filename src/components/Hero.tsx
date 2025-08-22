@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-night.jpg";
+import { useSectionSEO } from "@/components/SEOHead";
 
 export const Hero = () => {
+  useSectionSEO('hero');
 
   const content = {
     title: "Уральские узоры",
@@ -18,7 +20,14 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section 
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      data-seo-title="Уральские узоры ⚡ Архитектурные формы с орнаментами | Екатеринбург 2025"
+      data-seo-description="🏆 Изготавливаем эксклюзивные архитектурные формы с уральскими орнаментами"
+      role="banner"
+      aria-label="Главная секция сайта"
+    >
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -45,9 +54,9 @@ export const Hero = () => {
           {content.title}
         </h1>
 
-        <p className="text-xl sm:text-2xl text-gold mb-8 font-medium">
+        <h2 className="text-xl sm:text-2xl text-gold mb-8 font-medium">
           {content.subtitle}
-        </p>
+        </h2>
 
         <p className="text-lg text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">
           {content.description}

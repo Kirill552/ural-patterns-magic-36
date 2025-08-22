@@ -1,14 +1,53 @@
+User-agent: *
+Allow: /
+
+# Яндекс
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+# Google
 User-agent: Googlebot
 Allow: /
 
+# Bing
 User-agent: Bingbot
 Allow: /
 
-User-agent: Twitterbot
-Allow: /
+# Разрешить все файлы ресурсов
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+Allow: /*.svg$
+Allow: /*.ico$
+Allow: /*.woff$
+Allow: /*.woff2$
 
-User-agent: facebookexternalhit
-Allow: /
+# Запретить технические папки
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /_next/
+Disallow: /api/
+Disallow: /.git/
+Disallow: /.vscode/
 
-User-agent: *
-Allow: /
+# Карта сайта
+Sitemap: https://uralpatterns.lovable.app/sitemap.xml
+
+# Политика конфиденциальности
+Allow: /privacy-policy
+Allow: /terms-of-service
+
+# Основные разделы
+Allow: /#about
+Allow: /#solutions
+Allow: /#gallery
+Allow: /#calculator
+Allow: /#reviews
+Allow: /#contacts
+
+# Отложить индексацию для нагруженных ботов
+Crawl-delay: 2
