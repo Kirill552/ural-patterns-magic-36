@@ -1,0 +1,172 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Sun, Moon, ChevronLeft, ChevronRight } from "lucide-react";
+import heroNight from "@/assets/hero-night.jpg";
+import busStopDay from "@/assets/bus-stop-day.jpg";
+import wasteContainersWinter from "@/assets/waste-containers-winter.jpg";
+import pavilionSummer from "@/assets/pavilion-summer.jpg";
+import urbanFormsAutumn from "@/assets/urban-forms-autumn.jpg";
+
+export const Gallery = () => {
+  const [viewMode, setViewMode] = useState<'day' | 'night'>('day');
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const content = {
+    title: "Галерея проектов",
+    subtitle: "Наши работы в разное время суток",
+    dayMode: "Дневной режим",
+    nightMode: "Ночной режим",
+    projects: [
+      {
+        title: "Остановочный комплекс",
+        location: "г. Екатеринбург, ул. Ленина",
+        dayImage: busStopDay,
+        nightImage: heroNight,
+        description: "Современная остановка с традиционными уральскими орнаментами"
+      },
+      {
+        title: "Контейнерная площадка",
+        location: "Жилой комплекс «Северный»",
+        dayImage: pavilionSummer,
+        nightImage: wasteContainersWinter,
+        description: "Эстетичное решение для размещения мусорных контейнеров"
+      },
+      {
+        title: "Парковый павильон",
+        location: "Парк им. Маяковского",
+        dayImage: pavilionSummer,
+        nightImage: heroNight,
+        description: "Место отдыха с декоративными панелями"
+      },
+      {
+        title: "Малые архитектурные формы",
+        location: "Сквер «Уральский»",
+        dayImage: urbanFormsAutumn,
+        nightImage: heroNight,
+        description: "Комплексное благоустройство общественного пространства"
+      }
+    ]
+  };
+
+  const nextProject = () => {
+    setCurrentIndex((prev) => (prev + 1) % content.projects.length);
+  };
+
+  const prevProject = () => {
+    setCurrentIndex((prev) => (prev - 1 + content.projects.length) % content.projects.length);
+  };
+
+  const currentProject = content.projects[currentIndex];
+  const currentImage = viewMode === 'day' ? currentProject.dayImage : currentProject.nightImage;
+
+  return (
+    <section id="gallery" className="py-20 bg-primary/5">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+            {content.title}
+          </h2>
+          <p className="text-xl text-gold font-medium mb-8">
+            {content.subtitle}
+          </p>
+
+          {/* Day/Night toggle */}
+          <div className="flex items-center justify-center space-x-4 mb-8">
+            <Button
+              variant={viewMode === 'day' ? 'default' : 'outline'}
+              onClick={() => setViewMode('day')}
+              className={viewMode === 'day' ? 'bg-gold text-gold-foreground' : ''}
+            >
+              <Sun className="w-4 h-4 mr-2" />
+              {content.dayMode}
+            </Button>
+            <Button
+              variant={viewMode === 'night' ? 'default' : 'outline'}
+              onClick={() => setViewMode('night')}
+              className={viewMode === 'night' ? 'bg-primary text-primary-foreground' : ''}
+            >
+              <Moon className="w-4 h-4 mr-2" />
+              {content.nightMode}
+            </Button>
+          </div>
+        </div>
+
+        {/* Main gallery */}
+        <div className="max-w-5xl mx-auto">
+          <div className="relative">
+            <Card className="overflow-hidden border-border/50">
+              <div className="relative h-96 md:h-[500px] overflow-hidden">
+                <img 
+                  src={currentImage}
+                  alt={currentProject.title}
+                  className="w-full h-full object-cover transition-opacity duration-500"
+                />
+                
+                {/* Overlay with project info */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/80 to-transparent p-6 text-white">
+                  <h3 className="text-2xl font-bold mb-2">{currentProject.title}</h3>
+                  <p className="text-gold text-sm font-medium mb-2">{currentProject.location}</p>
+                  <p className="text-white/90 text-sm">{currentProject.description}</p>
+                </div>
+
+                {/* Navigation arrows */}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={prevProject}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/20 text-white hover:bg-black/40 border-0"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={nextProject}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/20 text-white hover:bg-black/40 border-0"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </Button>
+              </div>
+            </Card>
+
+            {/* Project indicators */}
+            <div className="flex justify-center space-x-2 mt-6">
+              {content.projects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    currentIndex === index ? 'bg-gold' : 'bg-muted-foreground/30'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Thumbnail grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+            {content.projects.map((project, index) => (
+              <Card 
+                key={index}
+                className={`cursor-pointer overflow-hidden border-border/50 hover:border-gold/30 transition-all duration-300 ${
+                  currentIndex === index ? 'border-gold ring-1 ring-gold/20' : ''
+                }`}
+                onClick={() => setCurrentIndex(index)}
+              >
+                <div className="relative h-24 overflow-hidden">
+                  <img 
+                    src={viewMode === 'day' ? project.dayImage : project.nightImage}
+                    alt={project.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors"></div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

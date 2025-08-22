@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Уральские узоры - Design System
+Colors: Dark graphite, gold, green. All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 210 11% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 11% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 11% 15%;
+
+    /* Dark graphite as primary */
+    --primary: 210 11% 15%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Gold accent */
+    --gold: 43 96% 56%;
+    --gold-foreground: 210 11% 15%;
+    --gold-muted: 43 74% 49%;
+
+    /* Green secondary */
+    --green: 142 76% 36%;
+    --green-foreground: 0 0% 98%;
+    --green-muted: 142 69% 58%;
+
+    --secondary: 210 17% 82%;
+    --secondary-foreground: 210 11% 15%;
+
+    --muted: 210 17% 95%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 43 96% 56%;
+    --accent-foreground: 210 11% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 43 96% 56%;
+
+    --radius: 0.75rem;
+
+    /* Custom gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(210 11% 15% / 0.75), hsl(210 11% 25% / 0.65));
+    --gradient-gold: linear-gradient(135deg, hsl(43 96% 56%), hsl(43 74% 49%));
+    --gradient-pattern: radial-gradient(circle at center, hsl(43 96% 56% / 0.3), transparent 70%);
+    
+    /* Animation variables */
+    --animate-glow: 0 0 20px hsl(43 96% 56% / 0.4);
+    --animate-pattern-glow: 0 0 30px hsl(43 96% 56% / 0.6);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 210 11% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 210 11% 11%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 210 11% 11%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 0% 95%;
+    --primary-foreground: 210 11% 15%;
+
+    /* Enhanced gold for dark mode */
+    --gold: 43 96% 62%;
+    --gold-foreground: 210 11% 8%;
+    --gold-muted: 43 86% 55%;
+
+    /* Enhanced green for dark mode */
+    --green: 142 84% 47%;
+    --green-foreground: 210 11% 8%;
+    --green-muted: 142 76% 63%;
+
+    --secondary: 210 11% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 210 11% 15%;
+    --muted-foreground: 217 19% 65%;
+
+    --accent: 43 96% 62%;
+    --accent-foreground: 210 11% 8%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 210 11% 15%;
+    --input: 210 11% 15%;
+    --ring: 43 96% 62%;
+
+    /* Enhanced glow for dark mode */
+    --animate-glow: 0 0 25px hsl(43 96% 62% / 0.6);
+    --animate-pattern-glow: 0 0 40px hsl(43 96% 62% / 0.8);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .pattern-glow {
+    box-shadow: var(--animate-pattern-glow);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .gold-glow {
+    box-shadow: var(--animate-glow);
+  }
+
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .gold-gradient {
+    background: var(--gradient-gold);
+  }
+
+  .pattern-overlay {
+    background: var(--gradient-pattern);
+  }
+
+  .parallax-element {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .pattern-animate {
+    animation: pulse-glow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-glow {
+    0% {
+      box-shadow: 0 0 20px hsl(43 96% 56% / 0.4);
+    }
+    100% {
+      box-shadow: 0 0 35px hsl(43 96% 56% / 0.7);
+    }
+  }
+
+  .ornament-pattern {
+    background-image: radial-gradient(circle at 25% 25%, hsl(43 96% 56% / 0.1) 2px, transparent 2px),
+                      radial-gradient(circle at 75% 75%, hsl(43 96% 56% / 0.1) 2px, transparent 2px);
+    background-size: 24px 24px;
+  }
+}
