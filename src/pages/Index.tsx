@@ -32,7 +32,7 @@ const Index = () => {
         <Solutions />
         <Technology />
         <Gallery />
-        <PriceCalculator />
+        {/* <PriceCalculator /> */}
         <Reviews />
         <Clients />
         <LegalInfo />

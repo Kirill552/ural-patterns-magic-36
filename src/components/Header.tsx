@@ -60,12 +60,12 @@ export const Header = () => {
             >
               {navigation.gallery}
             </button>
-            <button 
+            {/* <button 
               onClick={() => scrollToSection('calculator')}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               {navigation.calculator}
-            </button>
+            </button> */}
             <button 
               onClick={() => scrollToSection('clients')}
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -136,12 +136,12 @@ export const Header = () => {
               >
                 {navigation.gallery}
               </button>
-              <button 
+              {/* <button 
                 onClick={() => scrollToSection('calculator')}
                 className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
               >
                 {navigation.calculator}
-              </button>
+              </button> */}
               <button 
                 onClick={() => scrollToSection('reviews')}
                 className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
