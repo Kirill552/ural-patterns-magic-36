@@ -32,7 +32,7 @@ export const Hero = () => {
       <div className="absolute inset-0 z-0">
         <img 
           src={heroImage}
-          alt="Decorative panels with illuminated patterns"
+          alt="Декоративные панели с подсветкой — Уральские узоры"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 hero-gradient"></div>

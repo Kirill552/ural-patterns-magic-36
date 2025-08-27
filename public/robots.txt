@@ -35,19 +35,13 @@ Disallow: /.git/
 Disallow: /.vscode/
 
 # Карта сайта
-Sitemap: https://uralpatterns.lovable.app/sitemap.xml
+Sitemap: https://art-uu.ru/sitemap.xml
 
 # Политика конфиденциальности
 Allow: /privacy-policy
 Allow: /terms-of-service
 
 # Основные разделы
-Allow: /#about
-Allow: /#solutions
-Allow: /#gallery
-Allow: /#calculator
-Allow: /#reviews
-Allow: /#contacts
 
 # Отложить индексацию для нагруженных ботов
 Crawl-delay: 2

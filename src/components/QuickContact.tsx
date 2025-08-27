@@ -39,8 +39,28 @@ export const QuickContact = () => {
 
   // Handle custom event to open QuickContact
   useEffect(() => {
+    const track = (action: string, params?: Record<string, any>) => {
+      try {
+        // Yandex Metrika
+        // @ts-ignore
+        if (typeof ym === 'function' && (window as any).YM_ID) {
+          // @ts-ignore
+          ym((window as any).YM_ID, 'reachGoal', action, params || {});
+        }
+        // GA4
+        // @ts-ignore
+        if (typeof gtag === 'function') {
+          // @ts-ignore
+          gtag('event', action, params || {});
+        }
+      } catch (e) {
+        // no-op
+      }
+    };
+
     const handleOpenQuickContact = () => {
       setIsOpen(true);
+      track('open_quick_contact');
     };
 
     window.addEventListener('openQuickContact', handleOpenQuickContact);
@@ -77,6 +97,22 @@ export const QuickContact = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block"
+                    onClick={() => {
+                      try {
+                        // Yandex Metrika
+                        // @ts-ignore
+                        if (typeof ym === 'function' && (window as any).YM_ID) {
+                          // @ts-ignore
+                          ym((window as any).YM_ID, 'reachGoal', 'click_contact', { channel: option.name });
+                        }
+                        // GA4
+                        // @ts-ignore
+                        if (typeof gtag === 'function') {
+                          // @ts-ignore
+                          gtag('event', 'click_contact', { channel: option.name });
+                        }
+                      } catch {}
+                    }}
                   >
                     <Button
                       variant="ghost"

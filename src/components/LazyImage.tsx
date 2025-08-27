@@ -8,6 +8,12 @@ interface LazyImageProps {
   placeholderClassName?: string;
   onLoad?: () => void;
   onError?: () => void;
+  width?: number;
+  height?: number;
+  sizes?: string;
+  srcSet?: string;
+  webpSrcSet?: string;
+  avifSrcSet?: string;
 }
 
 export const LazyImage = ({ 
@@ -16,7 +22,13 @@ export const LazyImage = ({
   className = "", 
   placeholderClassName = "",
   onLoad,
-  onError 
+  onError,
+  width,
+  height,
+  sizes,
+  srcSet,
+  webpSrcSet,
+  avifSrcSet
 }: LazyImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
@@ -54,13 +66,19 @@ export const LazyImage = ({
     onError?.();
   };
 
+  // Preserve layout to reduce CLS if width/height provided
+  const containerStyle = width && height ? { aspectRatio: `${width} / ${height}` } : undefined;
+
   return (
-    <div ref={containerRef} className={`relative overflow-hidden ${className}`}>
+    <div ref={containerRef} className={`relative overflow-hidden ${className}`} style={containerStyle}>
       {!isLoaded && !hasError && (
         <Skeleton className={`w-full h-full absolute inset-0 ${placeholderClassName}`} />
       )}
       
       {isInView && (
+        <picture>
+          {avifSrcSet && <source type="image/avif" srcSet={avifSrcSet} sizes={sizes} />}
+          {webpSrcSet && <source type="image/webp" srcSet={webpSrcSet} sizes={sizes} />}
         <img
           ref={imgRef}
           src={src}
@@ -74,7 +92,12 @@ export const LazyImage = ({
           onError={handleError}
           loading="lazy"
           decoding="async"
+          width={width}
+          height={height}
+          sizes={sizes}
+          srcSet={srcSet}
         />
+        </picture>
       )}
 
       {hasError && (

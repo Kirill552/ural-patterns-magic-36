@@ -55,11 +55,11 @@ export const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-gold flex-shrink-0" />
-                <span className="text-sm text-primary-foreground/80">{content.phone}</span>
+                <a href="tel:+79120370170" className="text-sm text-primary-foreground/80 hover:text-gold transition-colors">{content.phone}</a>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-gold flex-shrink-0" />
-                <span className="text-sm text-primary-foreground/80">{content.email}</span>
+                <a href="mailto:director@a-96.ru" className="text-sm text-primary-foreground/80 hover:text-gold transition-colors">{content.email}</a>
               </div>
             </div>
           </div>
@@ -106,12 +106,12 @@ export const Footer = () => {
               Документы
             </h3>
             <nav className="space-y-3">
-              <button
-                onClick={() => setLegalModal("privacy")}
+              <a
+                href="/privacy-policy.html"
                 className="block text-primary-foreground/80 hover:text-gold transition-colors text-left text-sm"
               >
                 {content.legal.privacy}
-              </button>
+              </a>
               <button
                 onClick={() => setLegalModal("company")}
                 className="block text-primary-foreground/80 hover:text-gold transition-colors text-left text-sm"
@@ -130,12 +130,12 @@ export const Footer = () => {
               >
                 {content.legal.guarantees}
               </button>
-              <button
-                onClick={() => setLegalModal("terms")}
+              <a
+                href="/terms-of-service.html"
                 className="block text-primary-foreground/80 hover:text-gold transition-colors text-left text-sm"
               >
                 {content.legal.terms}
-              </button>
+              </a>
             </nav>
           </div>
 

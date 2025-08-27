@@ -9,7 +9,7 @@ export interface SitemapPage {
 
 export const sitePages: SitemapPage[] = [
   {
-    url: 'https://uralpatterns.lovable.app',
+    url: 'https://art-uu.ru/',
     lastModified: new Date().toISOString(),
     changeFrequency: 'weekly',
     priority: 1.0,
@@ -17,7 +17,7 @@ export const sitePages: SitemapPage[] = [
     description: '🏆 Изготавливаем эксклюзивные архитектурные формы с уральскими орнаментами: остановки, павильоны, контейнерные площадки. ✅ Лазерная резка ✅ Монтаж ✅ Гарантия 3 года'
   },
   {
-    url: 'https://uralpatterns.lovable.app#about',
+    url: 'https://art-uu.ru/',
     lastModified: new Date().toISOString(),
     changeFrequency: 'monthly',
     priority: 0.8,
@@ -25,7 +25,7 @@ export const sitePages: SitemapPage[] = [
     description: 'Узнайте больше о компании Уральские узоры - ведущем производителе архитектурных форм с традиционными орнаментами в Екатеринбурге и Уральском регионе'
   },
   {
-    url: 'https://uralpatterns.lovable.app#solutions',
+    url: 'https://art-uu.ru/',
     lastModified: new Date().toISOString(),
     changeFrequency: 'weekly',
     priority: 0.9,
@@ -33,7 +33,7 @@ export const sitePages: SitemapPage[] = [
     description: 'Контейнерные площадки, остановочные комплексы, павильоны и малые архитектурные формы с эксклюзивными уральскими орнаментами'
   },
   {
-    url: 'https://uralpatterns.lovable.app#gallery',
+    url: 'https://art-uu.ru/',
     lastModified: new Date().toISOString(),
     changeFrequency: 'weekly',
     priority: 0.8,
@@ -41,7 +41,7 @@ export const sitePages: SitemapPage[] = [
     description: 'Посмотрите примеры наших работ: архитектурные формы с орнаментами в дневном и ночном освещении'
   },
   {
-    url: 'https://uralpatterns.lovable.app#calculator',
+    url: 'https://art-uu.ru/',
     lastModified: new Date().toISOString(),
     changeFrequency: 'weekly',
     priority: 0.7,
@@ -49,7 +49,7 @@ export const sitePages: SitemapPage[] = [
     description: 'Интерактивный калькулятор для расчета стоимости архитектурных форм с уральскими орнаментами. Быстрый предварительный расчет цены'
   },
   {
-    url: 'https://uralpatterns.lovable.app#reviews',
+    url: 'https://art-uu.ru/',
     lastModified: new Date().toISOString(),
     changeFrequency: 'monthly',
     priority: 0.6,
@@ -57,7 +57,7 @@ export const sitePages: SitemapPage[] = [
     description: 'Отзывы заказчиков о качестве архитектурных форм и сервисе компании Уральские узоры. Сертификаты и награды'
   },
   {
-    url: 'https://uralpatterns.lovable.app#contacts',
+    url: 'https://art-uu.ru/',
     lastModified: new Date().toISOString(),
     changeFrequency: 'monthly',
     priority: 0.7,
@@ -129,7 +129,7 @@ export const generateMetaTags = (page: SitemapPage) => {
       description: page.description,
       url: page.url,
       type: 'website',
-      image: 'https://uralpatterns.lovable.app/lovable-uploads/4825c6a7-2c99-46da-82cc-47d7ac3b0dde.png',
+  image: 'https://art-uu.ru/lovable-uploads/4825c6a7-2c99-46da-82cc-47d7ac3b0dde.png',
       locale: 'ru_RU',
       siteName: 'Уральские узоры'
     },
@@ -137,7 +137,7 @@ export const generateMetaTags = (page: SitemapPage) => {
       card: 'summary_large_image',
       title: page.title,
       description: page.description,
-      image: 'https://uralpatterns.lovable.app/lovable-uploads/4825c6a7-2c99-46da-82cc-47d7ac3b0dde.png'
+  image: 'https://art-uu.ru/lovable-uploads/4825c6a7-2c99-46da-82cc-47d7ac3b0dde.png'
     }
   };
 };
@@ -147,13 +147,13 @@ export const generateLocalBusinessSchema = () => {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://uralpatterns.lovable.app/#localbusiness",
+  "@id": "https://art-uu.ru/#localbusiness",
     "name": "Уральские узоры",
     "image": [
-      "https://uralpatterns.lovable.app/lovable-uploads/4825c6a7-2c99-46da-82cc-47d7ac3b0dde.png"
+    "https://art-uu.ru/lovable-uploads/4825c6a7-2c99-46da-82cc-47d7ac3b0dde.png"
     ],
     "description": "Производство архитектурных форм с уральскими орнаментами в Екатеринбурге. Контейнерные площадки, остановки, павильоны, малые архитектурные формы.",
-    "url": "https://uralpatterns.lovable.app",
+  "url": "https://art-uu.ru/",
     "telephone": "+7-912-037-01-70",
     "email": "director@a-96.ru",
     "address": {

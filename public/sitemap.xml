@@ -5,87 +5,18 @@
   
   <!-- Главная страница -->
   <url>
-    <loc>https://uralpatterns.lovable.app</loc>
-    <lastmod>2025-01-22</lastmod>
+    <loc>https://art-uu.ru/</loc>
+    <lastmod>2025-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://uralpatterns.lovable.app/lovable-uploads/4825c6a7-2c99-46da-82cc-47d7ac3b0dde.png</image:loc>
+      <image:loc>https://art-uu.ru/lovable-uploads/4825c6a7-2c99-46da-82cc-47d7ac3b0dde.png</image:loc>
       <image:title>Уральские узоры - Архитектурные формы с традиционными орнаментами</image:title>
       <image:caption>Главная страница сайта компании Уральские узоры</image:caption>
     </image:image>
   </url>
 
   <!-- О компании -->
-  <url>
-    <loc>https://uralpatterns.lovable.app#about</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Решения и услуги -->
-  <url>
-    <loc>https://uralpatterns.lovable.app#solutions</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Технологии -->
-  <url>
-    <loc>https://uralpatterns.lovable.app#technology</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Галерея проектов -->
-  <url>
-    <loc>https://uralpatterns.lovable.app#gallery</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Калькулятор стоимости -->
-  <url>
-    <loc>https://uralpatterns.lovable.app#calculator</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Отзывы и сертификаты -->
-  <url>
-    <loc>https://uralpatterns.lovable.app#reviews</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Клиенты -->
-  <url>
-    <loc>https://uralpatterns.lovable.app#clients</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Юридическая информация -->
-  <url>
-    <loc>https://uralpatterns.lovable.app#legal-info</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
-  <!-- Контакты -->
-  <url>
-    <loc>https://uralpatterns.lovable.app#contacts</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <!-- Дополнительные хеш-якоря удалены из sitemap: фрагменты не поддерживаются спецификацией -->
 
 </urlset>

@@ -12,6 +12,16 @@ dist
 dist-ssr
 *.local
 
+# Deployment artifacts
+deploy-*.tar.gz
+deploy-dist.zip
+
+# Optimized images manifest/output (generated)
+public/optimized/
+
+# Local system files
+Thumbs.db
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

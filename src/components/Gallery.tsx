@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Sun, Moon, ChevronLeft, ChevronRight } from "lucide-react";
@@ -13,12 +13,34 @@ import urbanFormsAutumn from "@/assets/urban-forms-autumn.jpg";
 import stelaDay from "@/assets/stela-day.png";
 import stelaNight from "@/assets/stela-night.png";
 import { useSectionSEO } from "@/components/SEOHead";
+import { LazyImage } from "@/components/LazyImage";
+import { loadImagesManifest, toSrcSet } from "@/lib/images";
 
 export const Gallery = () => {
   useSectionSEO('gallery');
   
   const [viewMode, setViewMode] = useState<'day' | 'night'>('day');
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [srcsets, setSrcsets] = useState<Record<string, { webp?: string; avif?: string }>>({});
+
+  // Load manifest once
+  useEffect(() => {
+    (async () => {
+      const m = await loadImagesManifest();
+      if (!m) return;
+      const map: Record<string, { webp?: string; avif?: string }> = {};
+      [busStopDay, busStopNight, wasteContainersWinter, wasteContainersSummerDay, pavilionSummer, pavilionSummerNight, urbanFormsAutumn, stelaDay, stelaNight, heroNight].forEach((p) => {
+        if (typeof p === 'string') {
+          const rel = `assets/${p.split('/').pop()}`;
+          const e = m[rel];
+          if (e) {
+            map[rel] = { webp: toSrcSet(e.webp), avif: toSrcSet(e.avif) };
+          }
+        }
+      });
+      setSrcsets(map);
+    })();
+  }, []);
 
   const content = {
     title: "Галерея проектов",
@@ -119,10 +141,16 @@ export const Gallery = () => {
           <div className="relative">
             <Card className="overflow-hidden border-border/50">
               <div className="relative h-96 md:h-[500px] overflow-hidden">
-                <img 
+                <LazyImage
                   src={currentImage}
                   alt={currentProject.title}
-                  className="w-full h-full object-cover transition-opacity duration-500"
+                  className="w-full h-full"
+                  placeholderClassName="bg-muted"
+                  width={1600}
+                  height={1000}
+                  sizes="(max-width: 768px) 100vw, 1024px"
+                  webpSrcSet={srcsets[`assets/${(viewMode === 'day' ? currentProject.dayImage : currentProject.nightImage).split('/').pop()}`]?.webp}
+                  avifSrcSet={srcsets[`assets/${(viewMode === 'day' ? currentProject.dayImage : currentProject.nightImage).split('/').pop()}`]?.avif}
                 />
                 
                 {/* Overlay with project info */}
@@ -177,10 +205,16 @@ export const Gallery = () => {
                 onClick={() => setCurrentIndex(index)}
               >
                 <div className="relative h-24 overflow-hidden">
-                  <img 
+                  <LazyImage
                     src={viewMode === 'day' ? project.dayImage : project.nightImage}
                     alt={project.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full"
+                    placeholderClassName="bg-muted"
+                    width={320}
+                    height={160}
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    webpSrcSet={srcsets[`assets/${(viewMode === 'day' ? project.dayImage : project.nightImage).split('/').pop()}`]?.webp}
+                    avifSrcSet={srcsets[`assets/${(viewMode === 'day' ? project.dayImage : project.nightImage).split('/').pop()}`]?.avif}
                   />
                   <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors"></div>
                 </div>
