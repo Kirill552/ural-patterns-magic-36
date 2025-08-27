@@ -1,6 +1,11 @@
-import { MapPin, Phone, Mail } from "lucide-react";
+import { useState } from "react";
+import { MapPin, Phone, Mail, Shield, FileText, Building2, Award } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { LegalModals, ModalType } from "./LegalModals";
 
 export const Footer = () => {
+  const [legalModal, setLegalModal] = useState<ModalType | null>(null);
+
   const content = {
     company: "Уральские узоры",
     description: "Современные решения городской среды с традиционными орнаментами",
@@ -13,6 +18,13 @@ export const Footer = () => {
       solutions: "Решения",
       technology: "Технологии",
       contacts: "Контакты"
+    },
+    legal: {
+      privacy: "Политика конфиденциальности",
+      company: "Реквизиты компании",
+      certificates: "Документы",
+      guarantees: "Гарантия",
+      terms: "Условия использования"
     }
   };
 
@@ -25,7 +37,7 @@ export const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-10 h-10 bg-gold rounded-lg flex items-center justify-center pattern-overlay">
                 <span className="text-gold-foreground font-bold text-sm">УУ</span>
@@ -53,7 +65,7 @@ export const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="lg:col-span-1">
             <h3 className="text-lg font-semibold mb-4 text-gold">
               Быстрые ссылки
             </h3>
@@ -85,8 +97,47 @@ export const Footer = () => {
             </nav>
           </div>
 
-          {/* Contact Info */}
+          {/* Legal Links */}
           <div>
+            <h3 className="text-lg font-semibold mb-4 text-gold">
+              Документы
+            </h3>
+            <nav className="space-y-3">
+              <button
+                onClick={() => setLegalModal("privacy")}
+                className="block text-primary-foreground/80 hover:text-gold transition-colors text-left text-sm"
+              >
+                {content.legal.privacy}
+              </button>
+              <button
+                onClick={() => setLegalModal("company")}
+                className="block text-primary-foreground/80 hover:text-gold transition-colors text-left text-sm"
+              >
+                {content.legal.company}
+              </button>
+              <button
+                onClick={() => setLegalModal("certificates")}
+                className="block text-primary-foreground/80 hover:text-gold transition-colors text-left text-sm"
+              >
+                {content.legal.certificates}
+              </button>
+              <button
+                onClick={() => setLegalModal("guarantees")}
+                className="block text-primary-foreground/80 hover:text-gold transition-colors text-left text-sm"
+              >
+                {content.legal.guarantees}
+              </button>
+              <button
+                onClick={() => setLegalModal("terms")}
+                className="block text-primary-foreground/80 hover:text-gold transition-colors text-left text-sm"
+              >
+                {content.legal.terms}
+              </button>
+            </nav>
+          </div>
+
+          {/* Contact Info */}
+          <div className="lg:col-span-1">
             <h3 className="text-lg font-semibold mb-4 text-gold">
               Свяжитесь с нами
             </h3>
@@ -114,6 +165,12 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* Legal Modals */}
+      <LegalModals 
+        open={legalModal} 
+        onOpenChange={(open) => !open && setLegalModal(null)} 
+      />
     </footer>
   );
 };

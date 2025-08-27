@@ -1,24 +1,25 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { 
   Star, 
   Quote, 
   Award, 
-  MapPin, 
   Calendar,
   ChevronLeft,
   ChevronRight,
   Building2,
   User,
-  Shield
+  Shield,
+  MessageSquare
 } from "lucide-react";
+import { ReviewsModal } from "./ReviewsModal";
 
 export const Reviews = () => {
   const [currentReview, setCurrentReview] = useState(0);
+  const [reviewsModalOpen, setReviewsModalOpen] = useState(false);
 
   const content = {
     title: "Отзывы клиентов",
@@ -36,11 +37,11 @@ export const Reviews = () => {
         id: 1,
         name: "Алексей Петров",
         position: "Директор УК \"Современный дом\"",
-        company: "ЖК \"Северный\"",
-        location: "Екатеринбург",
+        company: "Управляющая компания",
+        location: "Уральский регион",
         rating: 5,
         date: "15 декабря 2024",
-        text: "Заказывали ограждения для контейнерных площадок в нашем ЖК. Качество изготовления превзошло ожидания! Орнаменты выполнены очень аккуратно, покрытие держится отлично даже зимой. Жители довольны - теперь двор выглядит гораздо эстетичнее.",
+        text: "Заказывали ограждения для контейнерных площадок в нашем ЖК. Качество изготовления превзошло ожидания! Орнаменты выполнены очень аккуратно, покрытие держится отлично даже зимой.",
         project: "Контейнерные площадки",
         avatar: "АП"
       },
@@ -48,11 +49,11 @@ export const Reviews = () => {
         id: 2,
         name: "Мария Сидорова",
         position: "Главный архитектор",
-        company: "Администрация г. Екатеринбурга",
-        location: "Екатеринбург",
+        company: "Администрация",
+        location: "Уральский регион",
         rating: 5,
         date: "28 ноября 2024",
-        text: "Сотрудничаем с \"Уральскими узорами\" уже третий год. Изготавливали остановочные комплексы для нескольких районов города. Особенно нравится, как они сочетают современные технологии с традиционными мотивами. Качество монтажа на высоте.",
+        text: "Сотрудничаем с \"Уральскими узорами\" уже третий год. Изготавливали остановочные комплексы для нескольких районов города. Особенно нравится, как они сочетают современные технологии с традиционными мотивами.",
         project: "Остановочные комплексы",
         avatar: "МС"
       },
@@ -60,40 +61,16 @@ export const Reviews = () => {
         id: 3,
         name: "Дмитрий Козлов",
         position: "Управляющий парком",
-        company: "Парк им. Маяковского",
-        location: "Екатеринбург",
+        company: "Городской парк",
+        location: "Уральский регион",
         rating: 5,
         date: "10 октября 2024",
-        text: "Установили павильон в нашем парке. Посетители в восторге от дизайна! Уральские орнаменты смотрятся очень органично в природной среде. Конструкция прочная, все материалы качественные. Рекомендуем!",
+        text: "Установили павильон в нашем парке. Посетители в восторге от дизайна! Уральские орнаменты смотрятся очень органично в природной среде. Конструкция прочная, все материалы качественные.",
         project: "Парковый павильон",
         avatar: "ДК"
-      },
-      {
-        id: 4,
-        name: "Елена Волкова",
-        position: "Заместитель главы",
-        company: "Администрация Железнодорожного района",
-        location: "Екатеринбург",
-        rating: 5,
-        date: "22 сентября 2024",
-        text: "Заказывали комплексное благоустройство сквера. Малые архитектурные формы выполнены безупречно. Особенно впечатлила работа с деталями - каждый элемент орнамента проработан с любовью. Сроки соблюдены точно в срок.",
-        project: "Благоустройство сквера",
-        avatar: "ЕВ"
       }
     ],
-
-    // Убрали секции сертификатов и наград, так как их пока нет
   };
-
-  const nextReview = () => {
-    setCurrentReview((prev) => (prev + 1) % content.reviews.length);
-  };
-
-  const prevReview = () => {
-    setCurrentReview((prev) => (prev - 1 + content.reviews.length) % content.reviews.length);
-  };
-
-  const currentReviewData = content.reviews[currentReview];
 
   return (
     <section id="reviews" className="py-20 bg-primary/5">
@@ -122,150 +99,86 @@ export const Reviews = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-          
-          {/* Reviews Carousel */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-foreground">Отзывы заказчиков</h3>
-            
-            <Card className="border-border/50">
-              <CardContent className="p-6">
-                {/* Review Header */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center space-x-3">
-                    <Avatar className="w-12 h-12">
-                      <AvatarFallback className="bg-gold text-gold-foreground font-semibold">
-                        {currentReviewData.avatar}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <h4 className="font-semibold text-foreground">{currentReviewData.name}</h4>
-                      <p className="text-sm text-muted-foreground">{currentReviewData.position}</p>
-                      <p className="text-sm text-gold">{currentReviewData.company}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="text-right">
-                    <div className="flex items-center space-x-1 mb-1">
-                      {[...Array(currentReviewData.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-gold text-gold" />
-                      ))}
-                    </div>
-                    <Badge variant="outline" className="text-xs">
-                      {currentReviewData.project}
-                    </Badge>
-                  </div>
-                </div>
-
-                {/* Review Text */}
-                <div className="relative mb-4">
-                  <Quote className="w-6 h-6 text-gold/30 absolute -top-2 -left-1" />
-                  <p className="text-muted-foreground leading-relaxed pl-6">
-                    {currentReviewData.text}
-                  </p>
-                </div>
-
-                {/* Review Footer */}
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <div className="flex items-center space-x-2">
-                    <MapPin className="w-4 h-4" />
-                    <span>{currentReviewData.location}</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Calendar className="w-4 h-4" />
-                    <span>{currentReviewData.date}</span>
-                  </div>
-                </div>
-
-                {/* Navigation */}
-                <div className="flex items-center justify-between mt-6">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={prevReview}
-                    className="flex items-center space-x-1"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                    <span>Предыдущий</span>
-                  </Button>
-
-                  <div className="flex space-x-2">
-                    {content.reviews.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentReview(index)}
-                        className={`w-2 h-2 rounded-full transition-colors ${
-                          currentReview === index ? 'bg-gold' : 'bg-muted-foreground/30'
-                        }`}
-                      />
-                    ))}
-                  </div>
-
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={nextReview}
-                    className="flex items-center space-x-1"
-                  >
-                    <span>Следующий</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+        {/* Modern Reviews Section */}
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
+            <h3 className="text-2xl font-bold text-foreground mb-4 md:mb-0">Отзывы заказчиков</h3>
+            <Button 
+              onClick={() => setReviewsModalOpen(true)}
+              variant="outline"
+              className="flex items-center space-x-2"
+            >
+              <MessageSquare className="w-4 h-4" />
+              <span>Все отзывы</span>
+            </Button>
           </div>
-
-            {/* Certificates & Awards */}
-            <div className="space-y-6">
-              
-              {/* Company Info */}
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-6"> "Уральские узоры"</h3>
-                
-                <div className="space-y-4">
-                  <Card className="border-border/50">
-                    <CardContent className="p-4">
-                      <div className="flex items-start space-x-3">
-                        <Award className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-sm mb-1">ООО "АртиДом"</h4>
-                          <p className="text-xs text-muted-foreground mb-2">Производство архитектурных форм</p>
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs text-muted-foreground">
-                              ОГРН: 1236600123456 • ИНН: 6663123456
-                            </span>
-                            <Badge variant="outline" className="text-xs">
-                              с 2019 года
-                            </Badge>
-                          </div>
-                        </div>
+          
+          {/* Reviews Carousel (Compact) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {content.reviews.map((review, index) => (
+              <Card key={index} className="border-border/50 h-full flex flex-col">
+                <CardContent className="p-5 flex flex-col h-full">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex items-center space-x-3">
+                      <Avatar className="w-10 h-10">
+                        <AvatarFallback className="bg-gold text-gold-foreground font-semibold">
+                          {review.avatar}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <h4 className="font-semibold text-sm">{review.name}</h4>
+                        <p className="text-xs text-gold">{review.company}</p>
                       </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-border/50">
-                    <CardContent className="p-4">
-                      <div className="flex items-start space-x-3">
-                        <div className="w-8 h-8 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Award className="w-4 h-4 text-gold" />
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-sm mb-1">Наши преимущества</h4>
-                          <ul className="text-xs text-muted-foreground space-y-1">
-                            <li>• Собственное производство</li>
-                            <li>• Опыт работы 5+ лет</li>
-                            <li>• Комплексные решения</li>
-                            <li>• Гарантия качества</li>
-                          </ul>
-                        </div>
+                    </div>
+                    
+                    <div className="text-right">
+                      <div className="flex items-center space-x-0.5">
+                        {[...Array(review.rating)].map((_, i) => (
+                          <Star key={i} className="w-3 h-3 fill-gold text-gold" />
+                        ))}
                       </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            </div>
+                    </div>
+                  </div>
+
+                  <div className="relative flex-grow mb-3">
+                    <Quote className="w-5 h-5 text-gold/30 absolute -top-1 -left-1" />
+                    <p className="text-muted-foreground text-sm leading-relaxed pl-5">
+                      {review.text}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-between mt-auto pt-3 border-t border-border/30">
+                    <Badge variant="outline" className="text-xs">
+                      {review.project}
+                    </Badge>
+                    <div className="flex items-center space-x-1 text-xs text-muted-foreground">
+                      <Calendar className="w-3 h-3" />
+                      <span>{review.date.split(' ')[0]} {review.date.split(' ')[1].substring(0, 3)}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          
+          {/* Call to Action */}
+          <div className="text-center">
+            <Button
+              onClick={() => setReviewsModalOpen(true)}
+              variant="default"
+              className="bg-gold text-gold-foreground hover:bg-gold/90 gold-glow"
+            >
+              Смотреть все отзывы
+            </Button>
+          </div>
         </div>
       </div>
+
+      {/* Reviews Modal */}
+      <ReviewsModal
+        open={reviewsModalOpen}
+        onOpenChange={setReviewsModalOpen}
+      />
     </section>
   );
 };
