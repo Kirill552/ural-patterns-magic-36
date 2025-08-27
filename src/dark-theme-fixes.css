@@ -14,6 +14,33 @@
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
 
+/* Улучшение читаемости заголовков в темной теме */
+.dark h3.text-gold {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.8);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.dark .CardTitle {
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+/* Улучшение текста в футере */
+.dark footer h3.text-gold {
+  text-shadow: 0 0 12px rgba(0, 0, 0, 1), 0 0 20px rgba(0, 0, 0, 0.9);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 10;
+}
+
+.dark footer .text-gold {
+  /* Предотвращаем размытие от окружающих градиентов */
+  position: relative;
+  z-index: 5;
+  isolation: isolate;
+}
+
 /* Улучшение видимости изображений в темной теме */
 .dark img {
   /* Удаляем фильтры, которые могут вызывать туманность */
