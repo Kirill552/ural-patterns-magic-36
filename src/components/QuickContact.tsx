@@ -17,7 +17,7 @@ export const QuickContact = () => {
     {
       name: "Telegram",
       icon: "✈️",
-      url: "https://t.me/uralpatterns",
+      url: "https://t.me/artidom",
       color: "bg-blue-500 hover:bg-blue-600",
       description: "Напишите в Telegram"
     },
@@ -26,7 +26,7 @@ export const QuickContact = () => {
       icon: "📞",
       url: "tel:+79120370170",
       color: "bg-gold hover:bg-gold-muted",
-      description: "+7 (912) 037-01-70"
+      description: "+7 912 037-01-70"
     },
     {
       name: "Email",
@@ -112,7 +112,7 @@ export const QuickContact = () => {
       {/* WhatsApp Web Widget for Desktop */}
       <div className="hidden lg:block fixed bottom-6 left-6 z-40">
         <a
-          href="https://wa.me/79430000000?text=Здравствуйте! Интересует изготовление архитектурных форм с уральскими орнаментами."
+          href="https://wa.me/79120370170?text=Здравствуйте! Интересует изготовление архитектурных форм с уральскими орнаментами."
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full shadow-lg transition-all duration-300 hover:scale-105"
@@ -125,7 +125,7 @@ export const QuickContact = () => {
       {/* Quick Call Button for Mobile */}
       <div className="lg:hidden fixed bottom-24 right-6 z-40">
         <a
-          href="tel:+73430000000"
+          href="tel:+79120370170"
           className="flex items-center justify-center w-12 h-12 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110"
         >
           <Phone className="w-5 h-5" />

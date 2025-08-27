@@ -1,10 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Trash2, Bus, Building, TreePine } from "lucide-react";
+import { Trash2, Bus, Building, TreePine, Landmark } from "lucide-react";
 import busStopImage from "@/assets/bus-stop-day.jpg";
-import wasteContainersImage from "@/assets/waste-containers-winter.jpg";
+import wasteContainersImage from "@/assets/waste-containers-summer-day.png";
 import pavilionImage from "@/assets/pavilion-summer.jpg";
 import urbanFormsImage from "@/assets/urban-forms-autumn.jpg";
+import stelaImage from "@/assets/stela-3.png";
 import { useSectionSEO } from "@/components/SEOHead";
 
 export const Solutions = () => {
@@ -29,6 +30,13 @@ export const Solutions = () => {
         features: ["Навес от дождя", "Информационные панели", "Скамейки", "Ночное освещение"]
       },
       {
+        icon: Landmark,
+        title: "Арт-стеллы",
+        description: "Декоративные стеллы с узорами и подсветкой для оформления городских пространств. Создают уникальный облик и подчеркивают локальную идентичность.",
+        image: stelaImage,
+        features: ["Художественная подсветка", "Уникальный дизайн", "Высота до 5 метров", "Всепогодное исполнение"]
+      },
+      {
         icon: Building,
         title: "Павильоны и беседки",
         description: "Архитектурные формы для отдыха и проведения мероприятий. Создают уютные зоны в парках и общественных пространствах.",
@@ -47,12 +55,23 @@ export const Solutions = () => {
     getQuote: "Получить предложение"
   };
 
+  // Функция для прокрутки к секции контактов
+  const scrollToContacts = () => {
+    document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Функция для открытия модального окна или формы (временно просто прокручивает к контактам)
+  const handleGetQuote = () => {
+    scrollToContacts();
+    // Здесь можно добавить открытие модального окна с формой запроса
+  };
+
   return (
     <section 
       id="solutions" 
       className="py-20 bg-muted/30"
       data-seo-title="Наши решения - Архитектурные формы с уральскими орнаментами"
-      data-seo-description="Контейнерные площадки, остановочные комплексы, павильоны и малые архитектурные формы"
+      data-seo-description="Контейнерные площадки, остановочные комплексы, арт-стеллы, павильоны и малые архитектурные формы"
       role="main"
       aria-labelledby="solutions-heading"
     >
@@ -78,7 +97,7 @@ export const Solutions = () => {
                   alt={solution.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent"></div>
                 <div className="absolute top-4 left-4 w-12 h-12 bg-gold rounded-full flex items-center justify-center">
                   <solution.icon className="w-6 h-6 text-gold-foreground" />
                 </div>
@@ -105,10 +124,19 @@ export const Solutions = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 pt-4">
-                  <Button variant="outline" size="sm" className="flex-1">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="flex-1"
+                    onClick={scrollToContacts}
+                  >
                     {content.viewMore}
                   </Button>
-                  <Button size="sm" className="flex-1 bg-gold text-gold-foreground hover:bg-gold-muted">
+                  <Button 
+                    size="sm" 
+                    className="flex-1 bg-gold text-gold-foreground hover:bg-gold-muted"
+                    onClick={handleGetQuote}
+                  >
                     {content.getQuote}
                   </Button>
                 </div>

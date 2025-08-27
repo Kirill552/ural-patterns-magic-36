@@ -1,0 +1,28 @@
+/* Стили для улучшения контрастности в темной теме */
+.dark .text-gold {
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.dark .from-primary\/80 {
+  --tw-gradient-from: rgba(0, 0, 0, 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.dark .text-white\/90 {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Улучшение видимости изображений в темной теме */
+.dark img {
+  /* Удаляем фильтры, которые могут вызывать туманность */
+  filter: none !important;
+}
+
+/* Исправление затемненного градиента на изображениях в секции решений */
+.dark .bg-gradient-to-t.from-primary\/30 {
+  --tw-gradient-from: rgba(0, 0, 0, 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}

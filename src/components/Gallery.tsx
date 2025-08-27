@@ -3,10 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Sun, Moon, ChevronLeft, ChevronRight } from "lucide-react";
 import heroNight from "@/assets/hero-night.jpg";
-import busStopDay from "@/assets/bus-stop-day.jpg";
+import busStopDay from "@/assets/bus-stop-day.png";
+import busStopNight from "@/assets/bus-stop-night.png";
 import wasteContainersWinter from "@/assets/waste-containers-winter.jpg";
+import wasteContainersSummerDay from "@/assets/waste-containers-summer-day.png";
 import pavilionSummer from "@/assets/pavilion-summer.jpg";
+import pavilionSummerNight from "@/assets/pavilion-summer-night.png";
 import urbanFormsAutumn from "@/assets/urban-forms-autumn.jpg";
+import stelaDay from "@/assets/stela-day.png";
+import stelaNight from "@/assets/stela-night.png";
 import { useSectionSEO } from "@/components/SEOHead";
 
 export const Gallery = () => {
@@ -23,28 +28,35 @@ export const Gallery = () => {
     projects: [
       {
         title: "Остановочный комплекс",
-        location: "г. Екатеринбург, ул. Ленина",
+        location: "Центральная часть города",
         dayImage: busStopDay,
-        nightImage: heroNight,
+  nightImage: busStopNight,
         description: "Современная остановка с традиционными уральскими орнаментами"
       },
       {
         title: "Контейнерная площадка",
-        location: "Жилой комплекс «Северный»",
-        dayImage: pavilionSummer,
+        location: "Жилой комплекс",
+        dayImage: wasteContainersSummerDay,
         nightImage: wasteContainersWinter,
         description: "Эстетичное решение для размещения мусорных контейнеров"
       },
       {
+        title: "Декоративные стеллы",
+        location: "Въезд в коттеджный посёлок",
+        dayImage: stelaDay,
+        nightImage: stelaNight,
+        description: "Световые стеллы с традиционным узором и подсветкой"
+      },
+      {
         title: "Парковый павильон",
-        location: "Парк им. Маяковского",
+        location: "Городской парк",
         dayImage: pavilionSummer,
-        nightImage: heroNight,
+        nightImage: pavilionSummerNight,
         description: "Место отдыха с декоративными панелями"
       },
       {
         title: "Малые архитектурные формы",
-        location: "Сквер «Уральский»",
+        location: "Общественное пространство",
         dayImage: urbanFormsAutumn,
         nightImage: heroNight,
         description: "Комплексное благоустройство общественного пространства"
@@ -114,10 +126,10 @@ export const Gallery = () => {
                 />
                 
                 {/* Overlay with project info */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/80 to-transparent p-6 text-white">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
                   <h3 className="text-2xl font-bold mb-2">{currentProject.title}</h3>
-                  <p className="text-gold text-sm font-medium mb-2">{currentProject.location}</p>
-                  <p className="text-white/90 text-sm">{currentProject.description}</p>
+                  <p className="text-gold text-sm font-medium mb-2 drop-shadow-md">{currentProject.location}</p>
+                  <p className="text-white text-sm drop-shadow-md">{currentProject.description}</p>
                 </div>
 
                 {/* Navigation arrows */}

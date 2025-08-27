@@ -228,7 +228,7 @@ export const Reviews = () => {
                       <div className="flex items-start space-x-3">
                         <Award className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
                         <div className="flex-1">
-                          <h4 className="font-semibold text-sm mb-1">ООО "АРтиДом"</h4>
+                          <h4 className="font-semibold text-sm mb-1">ООО "АртиДом"</h4>
                           <p className="text-xs text-muted-foreground mb-2">Производство архитектурных форм</p>
                           <div className="flex items-center justify-between">
                             <span className="text-xs text-muted-foreground">
