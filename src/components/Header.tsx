@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -9,18 +9,23 @@ export const Header = () => {
 
   const navigation = {
     about: "О проекте",
-    solutions: "Решения", 
+    solutions: "Решения",
     technology: "Технологии",
     gallery: "Галерея",
     calculator: "Калькулятор",
     reviews: "Отзывы",
     clients: "Для кого",
-    legal: "Документы",
     contacts: "Контакты"
   };
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
+
+  const openQuickContact = () => {
+    // Dispatch custom event to open QuickContact
+    window.dispatchEvent(new CustomEvent('openQuickContact'));
     setIsMenuOpen(false);
   };
 
@@ -73,13 +78,7 @@ export const Header = () => {
               {navigation.clients}
             </button>
             <button 
-              onClick={() => scrollToSection('legal-info')}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {navigation.legal}
-            </button>
-            <button 
-              onClick={() => scrollToSection('contacts')}
+              onClick={openQuickContact}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               {navigation.contacts}
@@ -155,13 +154,7 @@ export const Header = () => {
                 {navigation.clients}
               </button>
               <button 
-                onClick={() => scrollToSection('legal-info')}
-                className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
-              >
-                {navigation.legal}
-              </button>
-              <button 
-                onClick={() => scrollToSection('contacts')}
+                onClick={openQuickContact}
                 className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
               >
                 {navigation.contacts}

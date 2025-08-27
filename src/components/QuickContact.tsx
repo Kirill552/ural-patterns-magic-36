@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { MessageCircle, Phone, X, Mail } from "lucide-react";
@@ -36,6 +36,19 @@ export const QuickContact = () => {
       description: "director@a-96.ru"
     }
   ];
+
+  // Handle custom event to open QuickContact
+  useEffect(() => {
+    const handleOpenQuickContact = () => {
+      setIsOpen(true);
+    };
+
+    window.addEventListener('openQuickContact', handleOpenQuickContact);
+    
+    return () => {
+      window.removeEventListener('openQuickContact', handleOpenQuickContact);
+    };
+  }, []);
 
   return (
     <>

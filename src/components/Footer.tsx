@@ -89,7 +89,10 @@ export const Footer = () => {
                 {content.links.technology}
               </button>
               <button
-                onClick={() => scrollToSection('contacts')}
+                onClick={() => {
+                  // Dispatch custom event to open QuickContact
+                  window.dispatchEvent(new CustomEvent('openQuickContact'));
+                }}
                 className="block text-primary-foreground/80 hover:text-gold transition-colors text-left"
               >
                 {content.links.contacts}
@@ -141,9 +144,19 @@ export const Footer = () => {
             <h3 className="text-lg font-semibold mb-4 text-gold">
               Свяжитесь с нами
             </h3>
-            <p className="text-primary-foreground/80 text-sm leading-relaxed">
+            <p className="text-primary-foreground/80 text-sm leading-relaxed mb-4">
               Готовы обсудить ваш проект? Свяжитесь с нами для консультации и разработки индивидуального решения.
             </p>
+            <Button 
+              onClick={() => {
+                // Dispatch custom event to open QuickContact
+                window.dispatchEvent(new CustomEvent('openQuickContact'));
+              }}
+              variant="outline" 
+              className="w-full bg-background text-foreground hover:bg-muted"
+            >
+              Связаться с нами
+            </Button>
           </div>
         </div>
 

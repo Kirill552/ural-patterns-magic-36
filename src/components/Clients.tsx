@@ -91,7 +91,12 @@ export const Clients = () => {
               Свяжитесь с нами для консультации и разработки индивидуального решения
             </p>
             <button 
-              onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                // Scroll to contacts section
+                document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' });
+                // Dispatch custom event to open QuickContact
+                window.dispatchEvent(new CustomEvent('openQuickContact'));
+              }}
               className="bg-gold text-gold-foreground hover:bg-gold-muted px-8 py-3 rounded-lg font-semibold gold-glow transition-all duration-300"
             >
               Связаться с нами
