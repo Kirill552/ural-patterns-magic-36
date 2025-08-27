@@ -51,19 +51,12 @@ export const Solutions = () => {
         features: ["Разнообразие форм", "Быстрый монтаж", "Долговечность", "Эксклюзивный дизайн"]
       }
     ],
-    viewMore: "Подробнее",
     getQuote: "Получить предложение"
   };
 
-  // Функция для прокрутки к секции контактов
-  const scrollToContacts = () => {
-    document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  // Функция для открытия модального окна или формы (временно просто прокручивает к контактам)
+  // Открыть быстрый контакт через глобальное событие
   const handleGetQuote = () => {
-    scrollToContacts();
-    // Здесь можно добавить открытие модального окна с формой запроса
+    window.dispatchEvent(new CustomEvent('openQuickContact'));
   };
 
   return (
@@ -123,18 +116,10 @@ export const Solutions = () => {
                   ))}
                 </div>
 
-                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 pt-4">
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="flex-1"
-                    onClick={scrollToContacts}
-                  >
-                    {content.viewMore}
-                  </Button>
+                <div className="pt-4 flex justify-center">
                   <Button 
                     size="sm" 
-                    className="flex-1 bg-gold text-gold-foreground hover:bg-gold-muted"
+                    className="bg-gold text-gold-foreground hover:bg-gold-muted px-6"
                     onClick={handleGetQuote}
                   >
                     {content.getQuote}
